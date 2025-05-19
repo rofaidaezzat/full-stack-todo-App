@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Button } from "./ui/button";
-import { Pen, Trash } from "lucide-react";
+import { Trash } from "lucide-react";
 import { deleteTodoAction } from "@/actions/todo.actions";
 import Spinner from "./Spinner";
 import EditTodoForm from "./EditTodoDialog";

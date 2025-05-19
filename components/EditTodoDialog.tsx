@@ -3,8 +3,6 @@ import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -22,12 +20,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Button } from "./ui/button";
-import { Pen, Plus } from "lucide-react";
+import { Pen } from "lucide-react";
 import { Textarea } from "./ui/textarea";
 import { useForm } from "react-hook-form";
 import { TodoFormSchema, TodoFormValues } from "@/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { createTodoAction, updateTodoAction } from "@/actions/todo.actions";
+import { updateTodoAction } from "@/actions/todo.actions";
 import Spinner from "./Spinner";
 import { Itodo } from "@/interface";
 
