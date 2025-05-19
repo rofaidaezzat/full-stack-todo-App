@@ -5,7 +5,8 @@ const nextConfig: NextConfig = {
   /** @type {import('next').NextConfig} */
 
   experimental: {
-    serverActions: true,
+    serverActions: {},
+    
   },
 }
 
