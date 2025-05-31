@@ -22,9 +22,9 @@ export function TodoTable({ todos }: { todos: Itodo[] }) {
         </TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead className="max-w-[80px] truncate hidden sm:table-cell">
+            {/* <TableHead className="max-w-[80px] truncate hidden sm:table-cell">
               ID
-            </TableHead>
+            </TableHead> */}
             <TableHead>Title</TableHead>
             <TableHead>Status</TableHead>
             <TableHead className="text-right">Actions</TableHead>
@@ -36,9 +36,9 @@ export function TodoTable({ todos }: { todos: Itodo[] }) {
               key={todo.id}
               className="hover:bg-accent/40 transition-colors"
             >
-              <TableCell className="font-medium max-w-[80px] truncate hidden sm:table-cell">
+              {/* <TableCell className="font-medium max-w-[80px] truncate hidden sm:table-cell">
                 {todo.id}
-              </TableCell>
+              </TableCell> */}
               <TableCell className="whitespace-pre-line">
                 {todo.title}
               </TableCell>

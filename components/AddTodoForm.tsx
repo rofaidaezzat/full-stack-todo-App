@@ -45,15 +45,21 @@ const AddTodoForm = ({ userId }: { userId: string | null }) => {
   //   ***onSubmit
   const onSubmit = async (data: TodoFormValues) => {
     setLoading(true);
-    console.log(data);
-    await createTodoAction({
-      title: data.title,
-      body: data.body,
-      completed: data.completed,
-      userId: userId as string,
-    });
-    setOpen(false);
-    form.reset();
+    try {
+      await createTodoAction({
+        title: data.title,
+        body: data.body,
+        completed: data.completed,
+        userId: userId as string,
+      });
+      setOpen(false);
+      form.reset();
+    } catch (error) {
+      console.error(error);
+      // يمكنك هنا عرض رسالة خطأ للمستخدم إذا أردت
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -77,10 +83,14 @@ const AddTodoForm = ({ userId }: { userId: string | null }) => {
                   <FormItem>
                     <FormLabel className="font-semibold">Title</FormLabel>
                     <FormControl>
-                      <Input placeholder="Go to gym" {...field} className="rounded-lg focus:ring-2 focus:ring-primary/60 transition" />
+                      <Input
+                        placeholder="Go to gym"
+                        {...field}
+                        className="rounded-lg focus:ring-2 focus:ring-primary/60 transition"
+                      />
                     </FormControl>
                     <FormDescription>
-                      This is your todo title. 5-30 characters.
+                      This is your todo title. 2-30 characters.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -91,7 +101,9 @@ const AddTodoForm = ({ userId }: { userId: string | null }) => {
                 name="body"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-semibold">Short Description</FormLabel>
+                    <FormLabel className="font-semibold">
+                      Short Description
+                    </FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="Describe your todo..."
@@ -122,7 +134,8 @@ const AddTodoForm = ({ userId }: { userId: string | null }) => {
                       <FormLabel className="font-semibold">Completed</FormLabel>
                     </div>
                     <FormDescription>
-                      Your todo will be uncompleted by default unless you check it.
+                      Your todo will be uncompleted by default unless you check
+                      it.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>

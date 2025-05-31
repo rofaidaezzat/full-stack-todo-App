@@ -4,8 +4,8 @@ import { z } from "zod";
   export const TodoFormSchema = z.object({
     title: z
       .string()
-      .min(5, {
-        message: "Title must be at least 5 characters.",
+      .min(2, {
+        message: "Title must be at least 2 characters.",
       })
       .max(30, {
         message: "Title must not be longer than 30 characters.",
