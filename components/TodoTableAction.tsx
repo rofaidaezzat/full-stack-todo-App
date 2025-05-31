@@ -15,6 +15,8 @@ const TodoTableAction = ({ todo }: { todo: Itodo }) => {
       <Button
         size={"icon"}
         variant={"destructive"}
+        className="rounded-lg shadow hover:bg-destructive/80 transition-colors duration-200 ml-2"
+        title="Delete Todo"
         onClick={async () => {
           setLoading(true);
           await deleteTodoAction({ id: todo.id });

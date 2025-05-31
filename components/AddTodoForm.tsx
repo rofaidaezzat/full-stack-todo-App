@@ -58,32 +58,29 @@ const AddTodoForm = ({ userId }: { userId: string | null }) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button>
-          {" "}
-          <Plus size={14} />
-          todo
+        <Button className="flex items-center gap-2 px-4 py-2 rounded-lg shadow bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200">
+          <Plus size={16} />
+          <span className="font-semibold">Add Todo</span>
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] rounded-xl shadow-2xl bg-card animate-in fade-in-0 slide-in-from-top-8">
         <DialogHeader>
-          <DialogTitle>Add New Todo</DialogTitle>
+          <DialogTitle className="text-xl font-bold">Add New Todo</DialogTitle>
         </DialogHeader>
-        <div className=" py-4">
+        <div className="py-4">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <FormField
                 control={form.control}
                 name="title"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Title</FormLabel>
+                    <FormLabel className="font-semibold">Title</FormLabel>
                     <FormControl>
-                      <Input placeholder="go to gym" {...field} />
+                      <Input placeholder="Go to gym" {...field} className="rounded-lg focus:ring-2 focus:ring-primary/60 transition" />
                     </FormControl>
                     <FormDescription>
-                      This is your public display name. It can be your real name
-                      or a pseudonym. You can only change this once every 30
-                      days.
+                      This is your todo title. 5-30 characters.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -94,16 +91,16 @@ const AddTodoForm = ({ userId }: { userId: string | null }) => {
                 name="body"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>short description</FormLabel>
+                    <FormLabel className="font-semibold">Short Description</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Tell us a little bit about yourself"
-                        className="resize-none"
+                        placeholder="Describe your todo..."
+                        className="resize-none rounded-lg focus:ring-2 focus:ring-primary/60 transition"
                         {...field}
                       />
                     </FormControl>
                     <FormDescription>
-                      You can write short discription about next todo
+                      Optional: Add a short description (max 80 chars).
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -122,27 +119,24 @@ const AddTodoForm = ({ userId }: { userId: string | null }) => {
                           ref={field.ref}
                         />
                       </FormControl>
-                      <FormLabel>Completed</FormLabel>
+                      <FormLabel className="font-semibold">Completed</FormLabel>
                     </div>
                     <FormDescription>
-                      Your todo will be uncompleted by default unless you check
-                      it
+                      Your todo will be uncompleted by default unless you check it.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-
               <Button
                 type="submit"
                 disabled={loading}
-                className={loading ? "text-white bg-gray-500" : ""}
+                className="w-full flex items-center justify-center gap-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-200 shadow-md disabled:bg-gray-400 disabled:text-white"
               >
-                {" "}
                 {loading ? (
                   <>
                     <Spinner />
-                    saving
+                    Saving...
                   </>
                 ) : (
                   "Submit"
