@@ -8,7 +8,14 @@ const Navbar = () => {
     <nav className="sticky top-0 z-30 w-full bg-background/80 backdrop-blur border-b border-border shadow-sm py-2 px-4">
       <div className="container mx-auto flex items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <Image src="/window.svg" alt="Logo" width={32} height={32} className="rounded" />
+          <Image
+            src="/globe.svg"
+            alt="Globe Logo"
+            width={28}
+            height={28}
+            className="rounded ml-1"
+          />
+
           <span className="font-bold text-lg tracking-tight">Todo Manager</span>
         </div>
         <div className="flex items-center gap-2">
